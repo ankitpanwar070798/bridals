@@ -199,4 +199,4 @@ if cors is True:
 CSRF_TRUSTED_ORIGINS = get_list(os.environ.get('CSRF_TRUSTED_ORIGINS', 'http://localhost:8009'))
 
 
-EDITORJS_VERSION = '2.27.0'
+EDITORJS_VERSION = '2.27.0' 
