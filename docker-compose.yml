@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    networks:
+      - bridals_default
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: bridals
+      POSTGRES_USER: bridals
+      POSTGRES_PASSWORD: mypass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bridals_default
+
+volumes:
+  postgres_data:
+
+networks:
+  bridals_default:
